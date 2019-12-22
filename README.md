@@ -3,7 +3,7 @@ IDEA + Maven + Mybaits + Oracle 入门案例
 
  -  简单的入门案例，帮助初学者快速熟悉 Mybaits 框架
  -  能实现一般的 `"增，删，改，查，数据过程" `
- -  详细安装步骤：博客地址 https://editor.csdn.net/md?articleId=103378115
+ -  详细安装步骤：博客地址 https://blog.csdn.net/qq_34745941/article/details/103378115
 
 # 安装简述
  1. 用 IDEA 工具，创建 Maven 项目
