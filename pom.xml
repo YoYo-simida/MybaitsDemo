@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.company.mybaitsdemo</groupId>
+    <artifactId>mybaitsdemo</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <!--添加依赖 start-->
+    <dependencies>
+        <!--添加 Mybatis 依赖 start-->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>3.4.6</version>
+        </dependency>
+        <!--添加 Mybatis 依赖 end-->
+
+        <!--添加 Oracle 依赖 start-->
+        <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc6</artifactId>
+            <version>11.2.0.1.0</version>
+        </dependency>
+        <!--添加 Oracle 依赖 end-->
+
+        <!--添加日志依赖 start-->
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+        </dependency>
+        <!--添加日志依赖 end-->
+
+        <dependency>
+            <!--添加单元测试依赖 start-->
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>compile</scope>
+            <!--添加单元测试依赖 end-->
+        </dependency>
+    </dependencies>
+    <!--添加依赖 end-->
+
+    <!--解决找不到配置文件的方法 start-->
+    <build>
+        <finalName>MybaitsDemo</finalName>
+        <resources>
+            <resource>
+                <directory>${basedir}/src/main/java</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>${basedir}/src/main/resources</directory>
+            </resource>
+        </resources>
+    </build>
+    <!--解决找不到配置文件的方法 end-->
+
+    <!--解决 Maven 报错: 不再支持源选项 5。请使用 7 或更高版本 start-->
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+        <java.version>1.8</java.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+    <!--解决 Maven 报错: 不再支持源选项 5。请使用 7 或更高版本 end-->
+</project>

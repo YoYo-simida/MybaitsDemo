@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--以上，文档声明部分: 注意格式别写错了-->
+
+<!--com.company.mapper 中的 namespace 参数: 用来绑定 DAO 接口-->
+<mapper namespace="com.company.mapper.PersonMapper">
+    <!--定义返回值类型，其中 id=方法名，type=返回值类型，result=数据库列和实体类属性对应 start-->
+    <resultMap id="personMap" type="com.company.domain.PersonDomain">
+        <result column="PERSON_NO" property="personNo" jdbcType="INTEGER"/> <!--jdbcType 严格大写-->
+        <result column="NAME" property="name" jdbcType="VARCHAR"/>
+        <result column="SEX" property="sex" jdbcType="VARCHAR"/>
+        <result column="BIRTHDAY" property="birthday" jdbcType="DATE"/>
+    </resultMap>
+    <!--定义返回值类型，其中 id=方法名，type=返回值类型，result=数据库列和实体类属性对应 end-->
+    <!--具体的数据库操作 start-->
+    <select id="select" resultMap="personMap">
+        select * from person
+    </select>
+
+    <select id="selectByPersonNo" parameterType="Integer" resultMap="personMap">
+        select * from person where person_no = #{personNo}
+    </select>
+
+    <insert id="insert">
+        insert into person(PERSON_NO, NAME, SEX, BIRTHDAY)
+        values(#{personNo}, #{name}, #{sex}, #{birthday})
+    </insert>
+
+    <update id="update" parameterType="com.company.domain.PersonDomain">
+        update person set name = #{name}, sex = #{sex} where person_no = #{personNo}
+    </update>
+
+    <delete id="delete" parameterType="Integer">
+      delete from person where person_no = #{personNo}
+    </delete>
+    <!--具体的数据库操作 end-->
+
+    <parameterMap id="SalSumByEname" type="java.util.Map">
+        <parameter property="v_name" mode="IN" jdbcType="VARCHAR"/> <!--jdbcType 严格大写-->
+        <parameter property="v_sal" mode="OUT" jdbcType="INTEGER"/>
+    </parameterMap>
+    <select id="getSalSumByEname" parameterMap="SalSumByEname" statementType="CALLABLE">
+        {CALL scott.pro_get_salsumbyename(?, ?)}
+    </select>
+</mapper>
